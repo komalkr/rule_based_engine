@@ -1,0 +1,11 @@
+Dear ${PERSON_NAME},
+
+your compaign has been activated.
+campaign details :
+    rule name : ${RULE_NAME}
+    campaign : ${CAMPAIGN}
+    schedule : ${SCHEDULE}
+    condition : ${CONDITION}
+    action : ${ACTION}
+
+your's truly
