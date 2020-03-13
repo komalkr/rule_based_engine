@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+myDIV {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+}
+</style>
+
+</head>
+
+<script>
+function toggle() {
+ if( document.getElementById("hidethis").style.display=='none' ){
+   document.getElementById("hidethis").style.display = '';
+ }else{
+   document.getElementById("hidethis").style.display = 'none';
+ }
+}
+</script>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("addId");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+<body>
+<h2><input id="addId" type="button" value="Add Rule" onclick="toggle()"></h2>
+
+
+<table cellpadding="0" cellspacing="0" id="hidethis" style="display:none;">
+   <tr>
+      <td><p>Rule Name</p></td>
+      <td><p>Campaigns</p></td>
+      <td><p>Schedule</p></td>
+      <td><p>Conditions</p></td>
+      <td><p>Action</p></td>
+      <td><p>submit</p></td>
+   </tr>
+   <tr>
+       <form action="/add_rule" method="post">
+      <td><input type="text" name="rule" placeholder="Enter Rule Name"></td>
+      <td><input type="text" name="campaign" placeholder="Enter Campaigns"></td>
+      <td><input type="text" name="schedule" placeholder="Enter Schedule"></td>
+      <td><input type="text" name="condition" placeholder="Enter Conditions"></td>
+      <td><input type="text" name = "action" placeholder="Enter Action"></td>
+       <td> <input type="submit" value="Add"></td>
+       </form>
+   </tr>
+</table>
+
+
+<table>
+  <tr>
+    <th>Rule Name</th>
+    <th>Campaigns</th>
+    <th>Schedule</th>
+    <th>Conditions</th>
+    <th>Action</th>
+    <th>Status</th>
+  </tr>
+    {%for item in res_list%}
+    <tr>
+    <td>{{item['rule']}}</td>
+    <td>{{item['campaign']}}</td>
+    <td>{{item['schedule']}}</td>
+    <td>{{item['condition']}}</td>
+    <td>{{item['action']}}</td>
+    <td>activated</td>
+  </tr>
+    {%endfor%}
+
+</table>
+
+</body>
+</html>
